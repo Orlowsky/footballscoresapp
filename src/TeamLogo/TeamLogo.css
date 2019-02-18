@@ -1,0 +1,32 @@
+img{
+ width: 80px;
+ height: 75px;
+ 
+}
+
+
+
+.teamName{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     font-size: 1.5em;
+     color: #FBE2C1;
+}
+
+.containerTeamLogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 20%;
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-left: 20px; 
+
+    margin-bottom: 20px;
+}
+
+.containerTeamLogo:hover{
+    size: 110%;
+    transition: 1s;
+    font-size: 105%;
+}

@@ -1,0 +1,19 @@
+.containerTimeDate{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.date{
+    font-family: 'Raleway', sans-serif; 
+    text-align: center;
+    font-size: 1em;
+    color: #FBE2C1;
+}
+.time{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 1em;
+    line-height: 30px;
+    color: #FBE2C1;
+
+}
