@@ -1,24 +1,24 @@
 import React from "react";
-import "./TeamPlayers.css";
+import "./TeamStats.css";
 
-const TeamPlayers = () => {
+const TeamStats = () => {
   return (
     <div className="containerTeamPlayers">
         <div className="labelPlayers">
-      <label name="teamPlayers">TeamPlayers</label>
+      <label name="teamPlayers">Match Details</label>
       </div>
       <div className="ContainerBothTeam">
         <div className="firstTeamPlayers">
         <label>First Team Players</label>
         <div className='list-of-players' id='listplayers1' >
         <li>Sadio Mane</li>
-        <li>Mohammad Salah</li>
-        <li>Trent Alexander-Arnold</li>
-        <li>Andrew Robertson</li>
-        <li>James Milner</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
         </div>
         </div>
-
+        
         <div className="secondTeamPlayers">
         <label>Second Team Players</label>
         <div className='list-of-players' id="listplayers2">
@@ -34,4 +34,4 @@ const TeamPlayers = () => {
   );
 };
 
-export default TeamPlayers;
+export default TeamStats;

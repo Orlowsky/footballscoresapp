@@ -13,7 +13,9 @@
     margin-top: 5px;
 }
 .firstTeamPlayers{
+    
     text-align: center;
+    
 }
 .secondTeamPlayers{
     text-align: center;
@@ -23,12 +25,13 @@
 .ContainerBothTeam{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
     font-family: 'Raleway', sans-serif; 
     font-size: 1.4em;
     color: #FBE2C1;
     width: 100%;
+
 
 }
 .list-of-players{
