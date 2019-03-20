@@ -9,7 +9,7 @@ class ScoreTable extends React.Component {
     super(props);
   }
   render(){
-    const { handleClick } = this.props;
+    const { chosenGame, onRouteChange } = this.props;
   return (
    <div>
      
@@ -20,23 +20,33 @@ class ScoreTable extends React.Component {
                 <div className="homecomming-team flexbox-items">
                     <div className="homecomming-team logo"></div>
                     <br />
-                    <div className="homecomming-team name"></div>
+                    <div className="homecomming-team name">{`${chosenGame.homeTeam.name}`}</div>
                 </div>
                 <div className="flexbox-items">
-                    <div id="time-of-match"></div>
-                    <div id="date-of-match"></div>
+                    <div id="time-of-match">{`${chosenGame.utcDate.slice(11,16)}`}</div>
+                    <div id="date-of-match">{`${chosenGame.utcDate.slice(0,10)}`}</div>
                     <br />
                     <div id="vs"><div className="circle"></div><hr id="vs-line"/><div className="circle"></div></div>
                 </div>
                 <div className="away-team flexbox-items">
                     <div className="away-team logo"></div>
                     <br />
-                    <div className="away-team name"></div>
+                    <div className="away-team name">{`${chosenGame.awayTeam.name}`}</div>
                 </div>
             </div>
             <div id="score-container">
-                <div className="homecomming-team score"></div>
-                <div className="away-team score"></div>
+                <div className="homecomming-team score">
+                {chosenGame.score.fullTime.homeTeam === null ? 
+                   ('0') 
+                 : 
+                    (`${chosenGame.score.fullTime.homeTeam}`)
+                }</div>
+                <div className="away-team score">{chosenGame.score.fullTime.awayTeam === null ? 
+                   ('0') 
+                 : 
+                    (`${chosenGame.score.fullTime.awayTeam}`)
+                }
+                </div>
             </div>
             <hr id="bottom-devider" />
             <div id="close-details"></div>
@@ -45,7 +55,8 @@ class ScoreTable extends React.Component {
      type="button"
      className='button1'
      value="Click Here To pop up window" 
-     onClick = {()=> handleClick() } />
+     onClick = {(event)=> {onRouteChange('kickoff')} }
+     />
         </div>
     </div>
    </div>
