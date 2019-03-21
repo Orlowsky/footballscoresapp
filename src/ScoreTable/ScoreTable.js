@@ -9,7 +9,7 @@ class ScoreTable extends React.Component {
     super(props);
   }
   render(){
-    const { chosenGame, onRouteChange } = this.props;
+    const { chosenGame, onRouteChange,findTeamSpecificInfo } = this.props;
   return (
    <div>
      
@@ -50,13 +50,24 @@ class ScoreTable extends React.Component {
             </div>
             <hr id="bottom-devider" />
             <div id="close-details"></div>
+            <div className="btn-group btn-group-toggle btn-block " data-toggle="buttons">
             <button 
      id="trigger" 
      type="button"
-     className='button1'
+     className='btn btn-success btn-lg'
      value="Click Here To pop up window" 
      onClick = {(event)=> {onRouteChange('kickoff')} }
-     />
+     >Go back</button>
+
+<button 
+     id="trigger" 
+     type="button"
+     className='btn btn-success btn-lg'
+     value="Click Here To pop up window" 
+     onClick = {()=> {findTeamSpecificInfo()} }
+     >test</button>
+
+     </div>
         </div>
     </div>
    </div>

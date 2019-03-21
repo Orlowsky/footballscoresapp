@@ -172,11 +172,12 @@
   }
   li {
     border-bottom: 1px solid #ccc;
+
   }
-   li :hover{
-    transform:0.3s;
+ /*   li:hover{ 
+    transition: 1s;
     font-size: 110%;
-   }
+   } */
   li:last-child {
     border-bottom: none;
   }
@@ -185,4 +186,9 @@
     text-align: center;
     font-size: 1.55em;
     font-family: 'Roboto', sans-serif;
+}
+
+.center-element-list{
+    text-align: center;
+    font-size: 0.7em;
 }

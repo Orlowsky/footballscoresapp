@@ -26,12 +26,38 @@ class App extends Component {
     console.log(this.state.chosenGame);
   };
 
-  handleClick = () => {
-    this.setState({ gamesScheduled: [] });
+  findTeamSpecificInfo = () =>{
+     let homeTeam =  this.state.chosenGame.homeTeam.name
+     let awayTeam = this.state.chosenGame.awayTeam.name
 
-    console.log("działa");
+     console.log(homeTeam)
+
+     const YOUR_API_TOKEN = "19ca3d7a443c40eeb178ee5812bde0d4";
+    fetch(`https://api.football-data.org/v2/teams/`, {
+      headers: { "X-Auth-Token": YOUR_API_TOKEN },
+      dataType: "json",
+      type: "GET"
+    }).then(response=>response.json())
+    .then(json=> {
+      json.teams.forEach(team=>{
+        console.log(team.name)
+        if(homeTeam === team.name){
+          console.log(team.crestUrl)
+        }
+        //znalezc sposób by wyciagnać oba loga i wstawić do scoretable
+        //można po prostu wstawić jedno i jedną nazwę którą szukamy
+        //return od razu do elementu ?
+        //albo do funckji wstawic zmienna ltóra powie home czy nie away
+      })
+    })
+
+  }
+
+  handleClick = (league, allGamesOfDay) => {
+    let count = 0;
+    this.setState({ gamesScheduled: [] });
     const YOUR_API_TOKEN = "19ca3d7a443c40eeb178ee5812bde0d4";
-    fetch("https://api.football-data.org/v2/competitions/CL/matches", {
+    fetch(`https://api.football-data.org/v2/competitions/${league}/matches`, {
       headers: { "X-Auth-Token": YOUR_API_TOKEN },
       dataType: "json",
       type: "GET"
@@ -39,8 +65,9 @@ class App extends Component {
       .then(response => response.json())
       .then(json => {
         json.matches.forEach((match, index) => {
-          if (match.status === "SCHEDULED") {
+          if (match.status === "SCHEDULED" && count < allGamesOfDay) {
             console.log(match);
+            count++;
             this.setState(state => {
               const gamesScheduled = state.gamesScheduled.concat(match);
               return {
@@ -71,6 +98,7 @@ class App extends Component {
           <ScoreTable
             onRouteChange={this.onRouteChange}
             chosenGame={this.state.chosenGame}
+            findTeamSpecificInfo={this.findTeamSpecificInfo}
           />
         )}
       </div>
