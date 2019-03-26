@@ -9,7 +9,12 @@ class App extends Component {
     this.state = {
       gamesScheduled: [],
       route: "kickoff",
-      chosenGame: ""
+      chosenGame: "",
+      teamCrests:{
+        homeTeam: '',
+        awayTeam: ''
+      },
+
     };
   }
 
@@ -27,10 +32,12 @@ class App extends Component {
   };
 
   findTeamSpecificInfo = () =>{
-     let homeTeam =  this.state.chosenGame.homeTeam.name
-     let awayTeam = this.state.chosenGame.awayTeam.name
-
-     console.log(homeTeam)
+     let seakedTeamhome =  this.state.chosenGame.homeTeam.name
+     let seakedTeamaway =  this.state.chosenGame.awayTeam.name
+      let homeCrest ;
+      let awayCrest;
+     console.log(seakedTeamhome)
+     console.log(seakedTeamaway)
 
      const YOUR_API_TOKEN = "19ca3d7a443c40eeb178ee5812bde0d4";
     fetch(`https://api.football-data.org/v2/teams/`, {
@@ -41,14 +48,21 @@ class App extends Component {
     .then(json=> {
       json.teams.forEach(team=>{
         console.log(team.name)
-        if(homeTeam === team.name){
-          console.log(team.crestUrl)
+        if(seakedTeamhome === team.name){
+          console.log(team.crestUrl, 'home')
+          homeCrest = team.crestUrl
         }
-        //znalezc sposób by wyciagnać oba loga i wstawić do scoretable
-        //można po prostu wstawić jedno i jedną nazwę którą szukamy
-        //return od razu do elementu ?
-        //albo do funckji wstawic zmienna ltóra powie home czy nie away
+        if(seakedTeamaway === team.name){
+          console.log(team.crestUrl,'away')
+          awayCrest = team.crestUrl
+        }
+      // poprawic logo i nazwe druzyny tak by były nazwy na tej samej wysokosci
+      // i loga na tej samej
+      //stworzyć nowy komponent dla sprawdzanai informacji o drużynie  
       })
+      this.setState({teamCrests:{homeTeam: homeCrest
+        ,awayTeam: awayCrest}})
+      console.log(this.state.teamCrests)
     })
 
   }
@@ -99,6 +113,7 @@ class App extends Component {
             onRouteChange={this.onRouteChange}
             chosenGame={this.state.chosenGame}
             findTeamSpecificInfo={this.findTeamSpecificInfo}
+            crestUrlTeam={this.state.teamCrests}
           />
         )}
       </div>

@@ -9,7 +9,7 @@ class ScoreTable extends React.Component {
     super(props);
   }
   render(){
-    const { chosenGame, onRouteChange,findTeamSpecificInfo } = this.props;
+    const { chosenGame, onRouteChange,findTeamSpecificInfo, crestUrlTeam } = this.props;
   return (
    <div>
      
@@ -18,7 +18,9 @@ class ScoreTable extends React.Component {
             <div id="title">MATCH STATISTICS</div>
             <div id="teams-container">
                 <div className="homecomming-team flexbox-items">
-                    <div className="homecomming-team logo"></div>
+                    <div className="homecomming-team logo"><img src={`${crestUrlTeam.homeTeam}`} 
+                    alt='home-logo' 
+                    style = {{height: '70px', weight:'auto', alignSelf:'center' }}/></div>
                     <br />
                     <div className="homecomming-team name">{`${chosenGame.homeTeam.name}`}</div>
                 </div>
@@ -29,7 +31,9 @@ class ScoreTable extends React.Component {
                     <div id="vs"><div className="circle"></div><hr id="vs-line"/><div className="circle"></div></div>
                 </div>
                 <div className="away-team flexbox-items">
-                    <div className="away-team logo"></div>
+                    <div className="away-team logo"><img src={`${crestUrlTeam.awayTeam}`}
+                     alt='away-logo'
+                     style = {{height: '70px', weight:'auto', alignSelf:'center'}} /></div>
                     <br />
                     <div className="away-team name">{`${chosenGame.awayTeam.name}`}</div>
                 </div>
