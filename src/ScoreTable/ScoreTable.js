@@ -10,6 +10,8 @@ class ScoreTable extends React.Component {
   }
   render(){
     const { chosenGame, onRouteChange,findTeamSpecificInfo, crestUrlTeam } = this.props;
+    console.log(this.props)
+
   return (
    <div>
      
